@@ -1,0 +1,21 @@
+name: Swift CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run Swift file
+        run: |
+          mkdir -p Sources
+          echo 'print("✅ Swift CI Running Successfully!")' > Sources/main.swift
+          swift Sources/main.swift
+
